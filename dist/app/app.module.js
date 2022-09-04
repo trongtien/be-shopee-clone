@@ -12,6 +12,7 @@ const logger_middleware_1 = require("../config/logger.middleware");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const helmet_1 = require("helmet");
+const category_system_module_1 = require("../apis/category-system/category-system.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply((0, helmet_1.default)(), logger_middleware_1.LoggerMiddleware).forRoutes("*");
@@ -19,7 +20,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [category_system_module_1.CategoriSystemModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
