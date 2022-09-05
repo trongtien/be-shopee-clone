@@ -1,6 +1,7 @@
 import { CategorySystemService } from './category-system.service';
 export declare class CategorySystemController {
-    private booksService;
-    constructor(booksService: CategorySystemService);
-    getCategoriSystem(): Promise<any>;
+    private categoryService;
+    constructor(categoryService: CategorySystemService);
+    getCategoriSystemKeySeach(): Promise<import("./category-system.type").TCategorySystemKeySearch[]>;
+    getCategoriSystem(): Promise<import("./category-system.type").TCategorySystem[]>;
 }

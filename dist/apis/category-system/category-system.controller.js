@@ -11,24 +11,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategorySystemController = void 0;
 const common_1 = require("@nestjs/common");
+const role_guard_1 = require("../../libs/role/role-guard");
+const role_enum_1 = require("../../enums/role.enum");
 const category_system_service_1 = require("./category-system.service");
+const swagger_1 = require("@nestjs/swagger");
+const categoty_system_schema_1 = require("./categoty-system.schema");
 let CategorySystemController = class CategorySystemController {
-    constructor(booksService) {
-        this.booksService = booksService;
+    constructor(categoryService) {
+        this.categoryService = categoryService;
+    }
+    async getCategoriSystemKeySeach() {
+        const categoriesKeySearch = await this.categoryService.getCategorySystemKeySearch();
+        return categoriesKeySearch;
     }
     async getCategoriSystem() {
-        const books = await this.booksService.getCategorySystem();
-        return books;
+        const categories = await this.categoryService.getAllCategorySystem();
+        return categories;
     }
 };
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)("key-search"),
+    (0, swagger_1.ApiHeader)({
+        name: 'x-api-key-system',
+        description: 'Key get api',
+    }),
+    (0, common_1.UseGuards)((0, role_guard_1.default)(role_enum_1.Role_Get_Api.SYSTEM)),
+    (0, swagger_1.ApiResponse)({ status: 201, description: 'Get Susscess full' }),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
+    (0, swagger_1.ApiOkResponse)({ status: 200, type: categoty_system_schema_1.CategorySystemKeySearchSchema }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], CategorySystemController.prototype, "getCategoriSystemKeySeach", null);
+__decorate([
+    (0, common_1.Get)(""),
+    (0, swagger_1.ApiHeader)({
+        name: 'x-api-key-system',
+        description: 'Key get api',
+    }),
+    (0, common_1.UseGuards)((0, role_guard_1.default)(role_enum_1.Role_Get_Api.SYSTEM)),
+    (0, swagger_1.ApiResponse)({ status: 201, description: 'Get Susscess full' }),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
+    (0, swagger_1.ApiOkResponse)({ status: 200, type: categoty_system_schema_1.CategorySystemSchema }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CategorySystemController.prototype, "getCategoriSystem", null);
 CategorySystemController = __decorate([
     (0, common_1.Controller)('category-system'),
+    (0, swagger_1.ApiTags)('category-system'),
     __metadata("design:paramtypes", [category_system_service_1.CategorySystemService])
 ], CategorySystemController);
 exports.CategorySystemController = CategorySystemController;

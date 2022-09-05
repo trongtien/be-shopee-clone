@@ -1,11 +1,9 @@
-export type TCategorySystemKeySearch = {
+export declare class CategorySystemKeySearchSchema {
     id: string;
     uuid: string;
     name: string;
 }
-
-
-export type TCategorySystem = {
+export declare class CategorySystemSchema {
     id: number;
     uuid: string;
     name: string;
@@ -13,4 +11,3 @@ export type TCategorySystem = {
     image: string;
     path: string;
 }
-
