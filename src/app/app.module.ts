@@ -4,9 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import helmet from 'helmet';
 import { CategoriSystemModule } from '../apis/category-system/category-system.module';
+import { ProductSystemModule } from '../apis/product-system/product-system.module';
 
 @Module({
-  imports: [CategoriSystemModule],
+  imports: [CategoriSystemModule, ProductSystemModule],
   controllers: [AppController],
   providers: [AppService],
 })

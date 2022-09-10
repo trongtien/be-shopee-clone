@@ -1,10 +1,10 @@
 {
     "plugins": [
       ["module-resolver", {
-        "root": ["./src"]
-        // "alias": {
-        //   "~": "./src"
-        // }
+        "root": ["./src"],
+        "alias": {
+          "src": "./src"
+        }
       }]
     ]
 }
