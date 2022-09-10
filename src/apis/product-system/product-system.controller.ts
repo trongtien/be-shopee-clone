@@ -5,6 +5,7 @@ import { ProductSystemService } from './product-system.service';
 import RoleGuard from '../../libs/role/role-guard';
 import { Role_Get_Api } from '../../enums/role.enum';
 import { ListProductSystemDTO } from './dto/list-product.-system.dto';
+import { PageMetaDto } from '../../libs/dto/response-list-base.dto';
 // import { CreateProductSystemDto } from './dto/create-product-system.dto';
 // import { UpdateProductSystemDto } from './dto/update-product-system.dto';
 
@@ -22,8 +23,8 @@ export class ProductSystemController {
   @UseGuards(RoleGuard(Role_Get_Api.SYSTEM))
   @ApiResponse({ status: 201, description: 'Get Susscess full'})
   @ApiResponse({ status: 403, description: 'Forbidden'})
-  @ApiOkResponse({ status: 200,  type: ListProductSystemDTO })
-  findAll(@Query() query: QueryProductSystemDto): ListProductSystemDTO[] {
+  @ApiOkResponse({ status: 200,  type: ListProductSystemDTO  })
+  findAll(@Query() query: QueryProductSystemDto): PageMetaDto<ListProductSystemDTO> {
     return this.productSystemService.findAll(query);
   }
 

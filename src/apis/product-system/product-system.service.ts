@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { PageMetaDto } from 'src/libs/dto/response-list-base.dto';
 import { ListProductSystemDTO } from './dto/list-product.-system.dto';
 import { QueryProductSystemDto } from './dto/query-product-system.dto';
 
@@ -16,7 +17,7 @@ export class ProductSystemService {
     address: "TP Hồ Chí Minh"
   }
 
-  findAll(queryFillter: QueryProductSystemDto): ListProductSystemDTO[]{
+  findAll(queryFillter: QueryProductSystemDto): PageMetaDto<ListProductSystemDTO>{
     // eslint-disable-next-line prefer-const
     let arrProduct: ListProductSystemDTO[] = [];
 
@@ -30,6 +31,10 @@ export class ProductSystemService {
       i++;
     }
 
-    return arrProduct;
+    return {
+      items: arrProduct,
+      limit: queryFillter.limit,
+      page: queryFillter.page
+    };
   }
 }

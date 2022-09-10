@@ -20,6 +20,7 @@ const product_system_service_1 = require("./product-system.service");
 const role_guard_1 = require("../../libs/role/role-guard");
 const role_enum_1 = require("../../enums/role.enum");
 const list_product__system_dto_1 = require("./dto/list-product.-system.dto");
+const response_list_base_dto_1 = require("../../libs/dto/response-list-base.dto");
 let ProductSystemController = class ProductSystemController {
     constructor(productSystemService) {
         this.productSystemService = productSystemService;
@@ -41,7 +42,7 @@ __decorate([
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [query_product_system_dto_1.QueryProductSystemDto]),
-    __metadata("design:returntype", Array)
+    __metadata("design:returntype", response_list_base_dto_1.PageMetaDto)
 ], ProductSystemController.prototype, "findAll", null);
 ProductSystemController = __decorate([
     (0, common_1.Controller)('product-system'),

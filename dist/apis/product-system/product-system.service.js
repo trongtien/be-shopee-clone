@@ -28,7 +28,11 @@ let ProductSystemService = class ProductSystemService {
             arrProduct.push(Object.assign(Object.assign({}, this.fakeProductListData), { id: i + 1 }));
             i++;
         }
-        return arrProduct;
+        return {
+            items: arrProduct,
+            limit: queryFillter.limit,
+            page: queryFillter.page
+        };
     }
 };
 ProductSystemService = __decorate([
