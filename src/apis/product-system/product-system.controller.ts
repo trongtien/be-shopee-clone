@@ -25,6 +25,7 @@ export class ProductSystemController {
   @ApiResponse({ status: 403, description: 'Forbidden'})
   @ApiOkResponse({ status: 200,  type: ListProductSystemDTO  })
   findAll(@Query() query: QueryProductSystemDto): PageMetaDto<ListProductSystemDTO> {
+    console.log("this.productSystemService.findAll(query)", this.productSystemService.findAll(query))
     return this.productSystemService.findAll(query);
   }
 

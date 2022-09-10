@@ -12,7 +12,7 @@ export class PageMetaDto<T> {
   readonly limit: number;
 
   constructor({ page, limit }) {
-    this.page = page;
-    this.limit = limit;
+    this.page = Number(page);
+    this.limit = Number(limit);
   }
 }

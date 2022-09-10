@@ -13,8 +13,8 @@ exports.PageMetaDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
 class PageMetaDto {
     constructor({ page, limit }) {
-        this.page = page;
-        this.limit = limit;
+        this.page = Number(page);
+        this.limit = Number(limit);
     }
 }
 __decorate([

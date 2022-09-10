@@ -26,6 +26,7 @@ let ProductSystemController = class ProductSystemController {
         this.productSystemService = productSystemService;
     }
     findAll(query) {
+        console.log("this.productSystemService.findAll(query)", this.productSystemService.findAll(query));
         return this.productSystemService.findAll(query);
     }
 };
