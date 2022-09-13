@@ -1,1 +1,1 @@
-{"version":3,"file":"list-disstrict.dto.js","sourceRoot":"","sources":["../../../../src/apis/common-address/dto/list-disstrict.dto.ts"],"names":[],"mappings":";;;;AACA,MAAa,eAAe;IAOxB,YAAY,OAAiC;QACzC,MAAM,CAAC,MAAM,CAAC,IAAI,EAAE,OAAO,CAAC,CAAC;IACjC,CAAC;;;;CACJ;AAVD,0CAUC"}
+{"version":3,"file":"list-disstrict.dto.js","sourceRoot":"","sources":["../../../../src/apis/common-address/dto/list-disstrict.dto.ts"],"names":[],"mappings":";;;;;AACA,MAAa,eAAe;IAOxB,YAAY,OAAiC;QACzC,MAAM,CAAC,MAAM,CAAC,IAAI,EAAE,OAAO,CAAC,CAAC;IACjC,CAAC;;;;;;;CACJ;AAVD,0CAUC"}

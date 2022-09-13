@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommonAddressController = void 0;
 const openapi = require("@nestjs/swagger");
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const common_address_service_1 = require("./common-address.service");
@@ -65,6 +66,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
     (0, swagger_1.ApiOkResponse)({ status: 200, type: listProvince_dto_1.ListProviceDTO }),
     openapi.ApiResponse({ status: 200, type: [require("./dto/listProvince.dto").ListProviceDTO] }),
+    openapi.ApiResponse({ status: 200, type: [require("./dto/listProvince.dto").ListProviceDTO] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -79,6 +81,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 201, description: 'Get Susscess full' }),
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
     (0, swagger_1.ApiOkResponse)({ status: 200, type: list_disstrict_dto_1.ListDistrictDto }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)("provice_id")),
     __metadata("design:type", Function),
@@ -95,6 +98,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 201, description: 'Get Susscess full' }),
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
     (0, swagger_1.ApiOkResponse)({ status: 200, type: list_ward_dto_1.ListWardDTO }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)("districh_id")),
     __metadata("design:type", Function),
