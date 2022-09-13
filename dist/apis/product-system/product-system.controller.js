@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductSystemController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
 const query_product_system_dto_1 = require("./dto/query-product-system.dto");
@@ -26,7 +27,6 @@ let ProductSystemController = class ProductSystemController {
         this.productSystemService = productSystemService;
     }
     findAll(query) {
-        console.log("this.productSystemService.findAll(query)", this.productSystemService.findAll(query));
         return this.productSystemService.findAll(query);
     }
 };
@@ -40,6 +40,7 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 201, description: 'Get Susscess full' }),
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
     (0, swagger_1.ApiOkResponse)({ status: 200, type: list_product__system_dto_1.ListProductSystemDTO }),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [query_product_system_dto_1.QueryProductSystemDto]),

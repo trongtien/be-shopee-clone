@@ -10,12 +10,13 @@ exports.ProductSystemModule = void 0;
 const common_1 = require("@nestjs/common");
 const product_system_service_1 = require("./product-system.service");
 const product_system_controller_1 = require("./product-system.controller");
+const PrismaServiceBase_1 = require("../../libs/core/PrismaServiceBase");
 let ProductSystemModule = class ProductSystemModule {
 };
 ProductSystemModule = __decorate([
     (0, common_1.Module)({
         controllers: [product_system_controller_1.ProductSystemController],
-        providers: [product_system_service_1.ProductSystemService]
+        providers: [product_system_service_1.ProductSystemService, PrismaServiceBase_1.PrismaServiceBase]
     })
 ], ProductSystemModule);
 exports.ProductSystemModule = ProductSystemModule;

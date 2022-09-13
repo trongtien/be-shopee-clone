@@ -7,7 +7,7 @@ import { CategorySystemKeySearchSchema, CategorySystemSchema } from './categoty-
 @Controller('category-system')
 @ApiTags('category-system')
 export class CategorySystemController {
-    constructor(private categoryService: CategorySystemService) {}
+    constructor(private readonly categoryService: CategorySystemService) {}
 
     @Get("key-search")
     @ApiHeader({

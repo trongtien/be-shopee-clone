@@ -1,0 +1,184 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL_DEV")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Province {
+  id         Int       @default(autoincrement())
+  uuid       String    @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  provinceId Int       @map("province_id") @id
+  name       String    @db.VarChar(64)
+  createdAt  DateTime  @map("created_at") @db.Timestamptz(3) @default(now())
+  updatedAt  DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+  District   District[]
+ 
+  @@map("province")
+}
+
+model District {
+  id            Int      @default(autoincrement())
+  uuid          String   @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  districtId    Int      @id @map("district_id")
+  proviceAuthor Province @relation(fields: [provinceId], references: [provinceId])
+  provinceId    Int      @map("province_id") 
+  name          String   @db.VarChar(64)
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+  Ward          Ward[]
+
+  @@map("district")
+}
+
+model Ward {
+  id             Int      @default(autoincrement())
+  uuid           String   @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  wardId         Int      @id @map("ward_id")
+  districtId     Int      @map("district_id")
+  districtAuthor District @relation(fields: [districtId], references: [districtId])
+  name           String   @db.VarChar(64)
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt      DateTime @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+
+  @@map("ward")
+}
+
+model UserMarket {
+  id                 Int           @id @default(autoincrement())
+  uuid               String        @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  lastName           String        @map("last_name")
+  firstName          String        @map("first_name")
+  birthday           DateTime      @db.Date()
+  password           String
+  email              String
+  address            String
+  serviceCharge      Int?          @map("service_charge")
+  phone              String
+  nameMaket          String        @map("name_maket")
+  imageMaketResize   String?       @map("image_maket_reasise")
+  imageMaket         String?       @map("image_maket")
+  timeOpen           DateTime      @map("time_open") @db.Time()
+  timeClose          DateTime      @map("time_close") @db.Time()
+  isVerifyPhone      Boolean       @default(false) @map("is_veriy_phone")
+  isVerifyEmail      Boolean       @default(false) @map("is_veriy_email")
+  isMaketFood        Boolean       @default(false) @map("is_maket_food")
+  isDeleted          Boolean       @default(false) @map("is_deleted")
+  isUpdated          Boolean       @default(false) @map("is_updated")
+  token              String?
+  accessToken        String?
+  createdAt          DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdBy          String?       @map("created_by")
+  updatedAt          DateTime      @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+  updatedBy          String?       @map("updated_by")
+  deletedAt          DateTime      @default(now()) @updatedAt @map("deleted_at") @db.Timestamptz(3)
+  deletedBy          String?       @map("deleted_by")
+  totalProductSystem Int           @default(0) @map("total_product_system")
+  ProductSytem       ProductSytem[]
+
+  @@map("user_maket")
+}
+
+model UserSystem {
+  id            Int      @id @default(autoincrement())
+  uuid          String   @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  lastName      String   @map("last_name")
+  firstName     String   @map("first_name")
+  birthday      DateTime @db.Date()
+  password      String
+  email         String
+  address       String
+  imageReasize  String?  @map("image_readsize")
+  image         String?
+  serviceCharge Int?     @map("service_charge")
+  phone         String
+  isVerifyPhone Boolean  @default(false) @map("is_veriy_phone")
+  isVerifyEmail Boolean  @default(false) @map("is_veriy_email")
+  isDeleted     Boolean  @default(false) @map("is_deleted")
+  isUpdated     Boolean  @default(false) @map("is_updated")
+  token         String?
+  accessToken   String?
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdBy     String?  @map("created_by")
+  updatedAt     DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(3)
+  updatedBy     String?  @map("updated_by")
+  deletedAt     DateTime @default(now()) @updatedAt @map("deleted_at") @db.Timestamptz(3)
+  deletedBy     String?  @map("deleted_by")
+
+  @@map("user_system")
+}
+
+model CategorySystemKeySearch {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name      String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdBy String?  @map("created_by")
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+  updatedBy String?  @map("updated_by")
+  deletedAt DateTime @default(now()) @updatedAt @map("deleted_at") @db.Timestamptz(3)
+  deletedBy String?  @map("deleted_by")
+
+  @@map("category-system-key-seach")
+}
+
+model CategorySystem {
+  id           Int      @id @default(autoincrement())
+  uuid         String?  @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name         String?
+  imageReasize String?  @map("image_reasize")
+  image        String?
+  path         String?
+  isDeleted    Boolean  @default(false) @map("is_deleted")
+  isUpdate     Boolean  @default(false) @map("is_updated")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdBy    String?  @map("created_by")
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+  updatedBy    String?  @map("updated_by")
+  deletedAt    DateTime @default(now()) @updatedAt @map("deleted_at") @db.Timestamptz(3)
+  deletedBy    String?  @map("deleted_by")
+
+  @@map("category-system")
+}
+
+model ProductSytem {
+  id                 Int        @id @default(autoincrement())
+  uuid               String?    @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name               String?
+  imageReasize       String?    @map("image_reasize")
+  image              String?
+  path               String?
+  price              Float      @default(0)
+  priceDiscount      Float      @default(0) @map("price_discount")
+  priceFrom          Float      @default(0) @map("price_from")
+  priceTo            Float      @default(0) @map("price_to")
+  percentDiscount    Int        @default(0) @map("perccent_discount")
+  categoryUuid       String?    @unique @map("category_uuid")
+  categorySystemUuid String?    @unique @map("category_system_uuid")
+  sold               Int        @default(0)
+  following          Int        @default(0)
+  userFollowing      Int        @default(0) @map("user_following")
+  userMaketUuid      String     @map("user_maket_uuid")  @db.Uuid
+  userMaketAuthor    UserMarket @relation(fields: [userMaketUuid], references: [uuid])
+  quantityInStock    Int        @default(0) @map("quantity_in_stock")
+  origin             String?
+  description        String?    @db.Text
+  sentFrom           String?    @map("sent_from")
+  address            String?
+  reviewStar         Float      @default(0) @map("review_star")
+  isInThePrice       Boolean    @default(false) @map("is_in_the_price")
+  isDiscount         Boolean    @default(false) @map("is_discount")
+  isDeleted          Boolean    @default(false) @map("is_deleted")
+  isUpdate           Boolean    @default(false) @map("is_updated")
+  createdAt          DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  createdBy          String?    @map("created_by")
+  updatedAt          DateTime   @updatedAt @map("updated_at") @db.Timestamptz(3) @default(now())
+  updatedBy          String?    @map("updated_by")
+  deletedAt          DateTime   @default(now()) @updatedAt @map("deleted_at") @db.Timestamptz(3)
+  deletedBy          String?    @map("deleted_by")
+
+  @@map("product-system")
+}

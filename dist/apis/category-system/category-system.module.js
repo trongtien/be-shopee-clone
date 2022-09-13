@@ -10,11 +10,12 @@ exports.CategoriSystemModule = void 0;
 const common_1 = require("@nestjs/common");
 const category_system_service_1 = require("./category-system.service");
 const category_system_controller_1 = require("./category-system.controller");
+const PrismaServiceBase_1 = require("../../libs/core/PrismaServiceBase");
 let CategoriSystemModule = class CategoriSystemModule {
 };
 CategoriSystemModule = __decorate([
     (0, common_1.Module)({
-        providers: [category_system_service_1.CategorySystemService],
+        providers: [category_system_service_1.CategorySystemService, PrismaServiceBase_1.PrismaServiceBase],
         controllers: [category_system_controller_1.CategorySystemController]
     })
 ], CategoriSystemModule);

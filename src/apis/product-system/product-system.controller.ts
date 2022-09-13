@@ -12,7 +12,7 @@ import { PageMetaDto } from '../../libs/dto/response-list-base.dto';
 @Controller('product-system')
 @ApiTags('product-system')
 export class ProductSystemController {
-  constructor(private readonly productSystemService: ProductSystemService) {}
+  constructor(private productSystemService: ProductSystemService) {}
 
 
   @Get()
@@ -25,29 +25,8 @@ export class ProductSystemController {
   @ApiResponse({ status: 403, description: 'Forbidden'})
   @ApiOkResponse({ status: 200,  type: ListProductSystemDTO  })
   findAll(@Query() query: QueryProductSystemDto): PageMetaDto<ListProductSystemDTO> {
-    console.log("this.productSystemService.findAll(query)", this.productSystemService.findAll(query))
     return this.productSystemService.findAll(query);
   }
 
 
-  // @Post()
-  // create(@Body() createProductSystemDto: CreateProductSystemDto) {
-  //   return this.productSystemService.create(createProductSystemDto);
-  // }
-
-  
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.productSystemService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateProductSystemDto: UpdateProductSystemDto) {
-  //   return this.productSystemService.update(+id, updateProductSystemDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.productSystemService.remove(+id);
-  // }
 }
