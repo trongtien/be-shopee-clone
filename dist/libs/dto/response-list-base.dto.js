@@ -11,15 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageMetaDto = void 0;
 const openapi = require("@nestjs/swagger");
-const openapi = require("@nestjs/swagger");
 const swagger_1 = require("@nestjs/swagger");
 class PageMetaDto {
     constructor({ page, limit }) {
         this.page = Number(page);
         this.limit = Number(limit);
-    }
-    static _OPENAPI_METADATA_FACTORY() {
-        return { items: { required: true }, page: { required: true, type: () => Number }, limit: { required: true, type: () => Number } };
     }
     static _OPENAPI_METADATA_FACTORY() {
         return { items: { required: true }, page: { required: true, type: () => Number }, limit: { required: true, type: () => Number } };

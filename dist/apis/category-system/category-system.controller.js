@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategorySystemController = void 0;
 const openapi = require("@nestjs/swagger");
-const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const role_guard_1 = require("../../libs/role/role-guard");
 const role_enum_1 = require("../../enums/role.enum");
@@ -42,7 +41,6 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
     (0, swagger_1.ApiOkResponse)({ status: 200, type: categoty_system_schema_1.CategorySystemKeySearchSchema }),
     openapi.ApiResponse({ status: 200, type: [Object] }),
-    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -57,7 +55,6 @@ __decorate([
     (0, swagger_1.ApiResponse)({ status: 201, description: 'Get Susscess full' }),
     (0, swagger_1.ApiResponse)({ status: 403, description: 'Forbidden' }),
     (0, swagger_1.ApiOkResponse)({ status: 200, type: categoty_system_schema_1.CategorySystemSchema }),
-    openapi.ApiResponse({ status: 200, type: [Object] }),
     openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),

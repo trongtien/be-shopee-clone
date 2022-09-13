@@ -10,10 +10,11 @@ async function bootstrap() {
     cors: CorsMiddlewareConfig,
   });
 
-  // app.useStaticAssets(join(__dirname, '..', 'public'));
-
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api', app, document, {
+    customCssUrl: '/custom.css'
+  });
+
 
   app.useGlobalFilters(new BaseHttpException());
   await app.listen(3000);

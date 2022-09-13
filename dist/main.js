@@ -11,7 +11,9 @@ async function bootstrap() {
         cors: cors_middleware_1.CorsMiddlewareConfig,
     });
     const document = swagger_1.SwaggerModule.createDocument(app, swagger_2.swaggerConfig);
-    swagger_1.SwaggerModule.setup('api', app, document);
+    swagger_1.SwaggerModule.setup('api', app, document, {
+        customCssUrl: '/custom.css'
+    });
     app.useGlobalFilters(new BaseHttpException_1.BaseHttpException());
     await app.listen(3000);
 }

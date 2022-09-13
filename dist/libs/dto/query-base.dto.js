@@ -11,12 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReponseRepositoy = exports.QueryBaseDTO = void 0;
 const openapi = require("@nestjs/swagger");
-const openapi = require("@nestjs/swagger");
 const swagger_1 = require("@nestjs/swagger");
 class QueryBaseDTO {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { page: { required: true, type: () => Number }, limit: { required: true, type: () => Number } };
-    }
     static _OPENAPI_METADATA_FACTORY() {
         return { page: { required: true, type: () => Number }, limit: { required: true, type: () => Number } };
     }
@@ -39,9 +35,6 @@ __decorate([
 ], QueryBaseDTO.prototype, "limit", void 0);
 exports.QueryBaseDTO = QueryBaseDTO;
 class ReponseRepositoy {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { status: { required: true, type: () => Boolean }, error: { required: true, type: () => String }, data: { required: true } };
-    }
     static _OPENAPI_METADATA_FACTORY() {
         return { status: { required: true, type: () => Boolean }, error: { required: true, type: () => String }, data: { required: true } };
     }
